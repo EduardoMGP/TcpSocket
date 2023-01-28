@@ -1,0 +1,7 @@
+ls -la
+dir
+dir {0}
+echo {0}
+echo {0} {1}
+exit
+get {0}

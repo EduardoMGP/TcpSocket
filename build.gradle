@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'socket.tcp'
+version '1.0-SNAPSHOT'
+archivesBaseName = 'tcpSocket'
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+sourceCompatibility = 11
+targetCompatibility = 11
+
+
+task runServer(type: JavaExec) {
+    main = 'socket.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    version = '1.0-SNAPSHOT'
+    args 'server'
+}
+
+task runClient(type: JavaExec) {
+    main = 'socket.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    version = '1.0-SNAPSHOT'
+    args 'client'
+    standardInput = System.in
+}
+
+jar {
+    System.setProperty("file.encoding", "UTF-8")
+    manifest {
+        attributes(
+                'Main-Class': 'socket.Main',
+                'Manifest-Version': '1.0'
+        )
+    }
+}
